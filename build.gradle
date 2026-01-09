@@ -1,15 +1,35 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group = 'com.clnewze.lab.www'
 version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+}
+
+application {
+    mainClass = 'com.clnewze.lab.www.Main'
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    // JSON 파싱
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // WebSocket 서버
+    implementation 'org.java-websocket:Java-WebSocket:1.5.4'
+
+    // 로깅
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'ch.qos.logback:logback-classic:1.4.11'
+
+    // 테스트
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
