@@ -238,6 +238,7 @@ ocpp_basic/
 - [03-PROJECT-STRUCTURE.md](docs/03-PROJECT-STRUCTURE.md) - 프로젝트 구조
 - [04-IMPLEMENTATION-GUIDE.md](docs/04-IMPLEMENTATION-GUIDE.md) - 구현 가이드
 - [05-STATE-MACHINE.md](docs/05-STATE-MACHINE.md) - 상태 머신
+- [06-ROADMAP.md](docs/06-ROADMAP.md) - 로드맵 및 개선 계획
 
 ---
 
