@@ -3,6 +3,11 @@ package com.clnewze.lab.www.router;
 import com.clnewze.lab.www.action.ActionHandler;
 import com.clnewze.lab.www.action.BootNotificationHandler;
 import com.clnewze.lab.www.action.HeartbeatHandler;
+import com.clnewze.lab.www.action.StatusNotificationHandler;
+import com.clnewze.lab.www.action.AuthorizeHandler;
+import com.clnewze.lab.www.action.StartTransactionHandler;
+import com.clnewze.lab.www.action.StopTransactionHandler;
+import com.clnewze.lab.www.action.MeterValuesHandler;
 import com.clnewze.lab.www.protocol.*;
 import com.clnewze.lab.www.session.ChargePointSession;
 import com.google.gson.JsonArray;
@@ -23,7 +28,12 @@ public class MessageRouter {
         // 핸들러 등록
         register(new BootNotificationHandler());
         register(new HeartbeatHandler());
-        // 추가 핸들러는 여기에 등록
+        // 응용단계 핸들러 등록
+        register(new StatusNotificationHandler());
+        register(new AuthorizeHandler());
+        register(new StartTransactionHandler());
+        register(new StopTransactionHandler());
+        register(new MeterValuesHandler());
     }
 
     private void register(ActionHandler handler) {
