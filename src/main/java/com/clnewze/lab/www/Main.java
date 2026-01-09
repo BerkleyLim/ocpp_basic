@@ -1,17 +1,35 @@
 package com.clnewze.lab.www;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import com.clnewze.lab.www.router.MessageRouter;
+import com.clnewze.lab.www.session.SessionManager;
+import com.clnewze.lab.www.transport.websocket.OcppWebSocketServer;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+/**
+ * OCPP 서버 진입점
+ */
+public class Main {
+
+    public static void main(String[] args) {
+        int port = 8080;
+
+        // 컴포넌트 생성
+        SessionManager sessionManager = new SessionManager();
+        MessageRouter router = new MessageRouter();
+
+        // 서버 생성 및 시작
+        OcppWebSocketServer server = new OcppWebSocketServer(port, sessionManager, router);
+        server.start();
+
+        System.out.println("Press Ctrl+C to stop the server");
+
+        // Shutdown hook
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("\nShutting down...");
+            try {
+                server.stop(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }));
     }
 }
