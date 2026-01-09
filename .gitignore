@@ -41,3 +41,13 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Node.js ###
+node_modules/
+package-lock.json
+
+### Python ###
+__pycache__/
+*.pyc
+venv/
+.venv/

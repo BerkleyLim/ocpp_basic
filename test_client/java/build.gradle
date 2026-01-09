@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
+application {
+    mainClass = 'TestClient'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.java-websocket:Java-WebSocket:1.5.4'
+}
+
+// 소스 파일이 현재 폴더에 있음
+sourceSets {
+    main {
+        java {
+            srcDirs = ['.']
+        }
+    }
+}

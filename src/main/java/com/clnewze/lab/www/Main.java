@@ -10,7 +10,7 @@ import com.clnewze.lab.www.transport.websocket.OcppWebSocketServer;
 public class Main {
 
     public static void main(String[] args) {
-        int port = 8080;
+        int port = 8081;
 
         // 컴포넌트 생성
         SessionManager sessionManager = new SessionManager();
